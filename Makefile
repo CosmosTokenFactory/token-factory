@@ -12,7 +12,7 @@ SIMAPP = ./app
 DOCKER := $(shell which docker)
 BUF_IMAGE=bufbuild/buf@sha256:3cb1f8a4b48bd5ad8f09168f10f607ddc318af202f5c057d52a45216793d85e5 #v1.4.0
 DOCKER_BUF := $(DOCKER) run --rm -v $(CURDIR):/workspace --workdir /workspace $(BUF_IMAGE)
-HTTPS_GIT := https://github.com/CosmWasm/token-factory.git
+HTTPS_GIT := https://github.com/CosmosTokenFactory/token-factory.git
 
 export GO111MODULE = on
 
@@ -59,7 +59,7 @@ ldflags = -X github.com/cosmos/cosmos-sdk/version.Name=wasm \
 		  -X github.com/cosmos/cosmos-sdk/version.AppName=toked \
 		  -X github.com/cosmos/cosmos-sdk/version.Version=$(VERSION) \
 		  -X github.com/cosmos/cosmos-sdk/version.Commit=$(COMMIT) \
-		  -X github.com/CosmWasm/token-factory/app.Bech32Prefix=wasm \
+		  -X github.com/CosmosTokenFactory/token-factory/app.Bech32Prefix=wasm \
 		  -X "github.com/cosmos/cosmos-sdk/version.BuildTags=$(build_tags_comma_sep)"
 
 ifeq ($(WITH_CLEVELDB),yes)
@@ -188,11 +188,6 @@ proto-lint:
 
 proto-check-breaking:
 	@$(DOCKER_BUF) breaking --against $(HTTPS_GIT)#branch=main
-
-proto-format:
-	@echo "Formatting Protobuf files"
-	@if docker ps -a --format '{{.Names}}' | grep -Eq "^${containerProtoFmt}$$"; then docker start -a $(containerProtoFmt); else docker run --name $(containerProtoFmt) -v $(CURDIR):/workspace --workdir /workspace tendermintdev/docker-build-proto \
-		find ./ -not -path "./third_party/*" -name "*.proto" -exec clang-format -i {} \; ; fi
 
 .PHONY: all install install-debug \
 	go-mod-cache draw-deps clean build format \
