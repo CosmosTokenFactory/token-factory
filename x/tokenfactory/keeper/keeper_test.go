@@ -7,10 +7,10 @@ import (
 	"github.com/stretchr/testify/suite"
 	tmproto "github.com/tendermint/tendermint/proto/tendermint/types"
 
-	"github.com/CosmWasm/token-factory/app/apptesting"
-	"github.com/CosmWasm/token-factory/x/tokenfactory/keeper"
-	"github.com/CosmWasm/token-factory/x/tokenfactory/testhelpers"
-	"github.com/CosmWasm/token-factory/x/tokenfactory/types"
+	"github.com/CosmosTokenFactory/token-factory/app/apptesting"
+	"github.com/CosmosTokenFactory/token-factory/x/tokenfactory/keeper"
+	"github.com/CosmosTokenFactory/token-factory/x/tokenfactory/testhelpers"
+	"github.com/CosmosTokenFactory/token-factory/x/tokenfactory/types"
 )
 
 type KeeperTestSuite struct {

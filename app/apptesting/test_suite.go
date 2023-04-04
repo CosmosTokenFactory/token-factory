@@ -28,9 +28,9 @@ import (
 	tmtypes "github.com/tendermint/tendermint/proto/tendermint/types"
 	dbm "github.com/tendermint/tm-db"
 
-	authzcodec "github.com/CosmWasm/token-factory/x/tokenfactory/types/authzcodec"
+	authzcodec "github.com/CosmosTokenFactory/token-factory/x/tokenfactory/types/authzcodec"
 
-	"github.com/CosmWasm/token-factory/app"
+	"github.com/CosmosTokenFactory/token-factory/app"
 	minttypes "github.com/cosmos/cosmos-sdk/x/mint/types"
 )
 

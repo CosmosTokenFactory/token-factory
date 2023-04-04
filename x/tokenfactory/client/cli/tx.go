@@ -12,7 +12,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/client/tx"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/CosmWasm/token-factory/x/tokenfactory/types"
+	"github.com/CosmosTokenFactory/token-factory/x/tokenfactory/types"
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
 )
 

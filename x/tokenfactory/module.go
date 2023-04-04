@@ -25,12 +25,12 @@ import (
 	abci "github.com/tendermint/tendermint/abci/types"
 
 	// "github.com/osmosis-labs/osmosis/v12/simulation/simtypes"
-	simulation "github.com/CosmWasm/token-factory/x/tokenfactory/simulation"
+	simulation "github.com/CosmosTokenFactory/token-factory/x/tokenfactory/simulation"
 	simtypes "github.com/cosmos/cosmos-sdk/types/simulation"
 
-	"github.com/CosmWasm/token-factory/x/tokenfactory/client/cli"
-	"github.com/CosmWasm/token-factory/x/tokenfactory/keeper"
-	"github.com/CosmWasm/token-factory/x/tokenfactory/types"
+	"github.com/CosmosTokenFactory/token-factory/x/tokenfactory/client/cli"
+	"github.com/CosmosTokenFactory/token-factory/x/tokenfactory/keeper"
+	"github.com/CosmosTokenFactory/token-factory/x/tokenfactory/types"
 )
 
 var (

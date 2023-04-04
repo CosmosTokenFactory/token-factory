@@ -44,9 +44,9 @@ cd ..
 buf generate
 
 # move proto files to the right places
-cp -r ./github.com/CosmWasm/token-factory/x/* x/
+cp -r ./github.com/CosmosTokenFactory/token-factory/x/* x/
 rm -rf ./github.com
 
-go mod tidy 
+go mod tidy
 
 
