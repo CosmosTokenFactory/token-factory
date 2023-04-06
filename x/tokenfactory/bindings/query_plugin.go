@@ -116,7 +116,7 @@ func ConvertSdkCoinsToWasmCoins(coins []sdk.Coin) wasmvmtypes.Coins {
 func ConvertSdkCoinToWasmCoin(coin sdk.Coin) wasmvmtypes.Coin {
 	return wasmvmtypes.Coin{
 		Denom: coin.Denom,
-		// Note: gamm tokens have 18 decimal places, so 10^22 is common, no longer in u64 range
+		// Note: tokenfactory tokens have 18 decimal places, so 10^22 is common, no longer in u64 range
 		Amount: coin.Amount.String(),
 	}
 }

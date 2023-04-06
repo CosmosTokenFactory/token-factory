@@ -4,6 +4,8 @@
 # Example:
 # CHAIN_ID="tf-1" HOME_DIR="~/.tf1/" TIMEOUT_COMMIT="500ms" CLEAN=true sh scripts/test_node.sh
 # CHAIN_ID="tf-2" HOME_DIR="~/.tf2/" CLEAN=true RPC=36657 REST=2317 PROFF=6061 P2P=36656 GRPC=8090 GRPC_WEB=8091 ROSETTA=8081 TIMEOUT_COMMIT="500ms" sh scripts/test_node.sh
+# 
+# toked export --home ~/.tf1/ > ~/Desktop/tf1.json
 
 export KEY="tf1"
 export CHAIN_ID=${CHAIN_ID:-"tf-1"}
@@ -67,7 +69,8 @@ from_scratch () {
   update_test_genesis '.app_state["gov"]["deposit_params"]["min_deposit"]=[{"denom": "ujuno","amount": "1000000"}]'
   update_test_genesis '.app_state["crisis"]["constant_fee"]={"denom": "ujuno","amount": "1000"}'  
 
-  update_test_genesis '.app_state["tokenfactory"]["params"]["denom_creation_fee"]=[{"denom":"ujuno","amount":"100"}]'
+  # update_test_genesis '.app_state["tokenfactory"]["params"]["denom_creation_fee"]=[{"denom":"ujuno","amount":"100"}]'
+  update_test_genesis '.app_state["tokenfactory"]["params"]["denom_creation_fee"]=[]'
 
   update_test_genesis '.app_state["feeshare"]["params"]["allowed_denoms"]=["ujuno"]'
 
