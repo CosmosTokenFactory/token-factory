@@ -25,6 +25,9 @@ type BankKeeper interface {
 	GetBalance(ctx sdk.Context, addr sdk.AccAddress, denom string) sdk.Coin
 
 	BlockedAddr(addr sdk.AccAddress) bool
+
+	SetParams(ctx sdk.Context, params banktypes.Params)
+	GetParams(ctx sdk.Context) banktypes.Params
 }
 
 type AccountKeeper interface {
