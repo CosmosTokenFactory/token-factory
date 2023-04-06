@@ -6,6 +6,7 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
 	"github.com/CosmosTokenFactory/token-factory/x/tokenfactory/types"
+	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
 )
 
 func (k Keeper) mintTo(ctx sdk.Context, amount sdk.Coin, mintTo string) error {
@@ -83,4 +84,24 @@ func (k Keeper) forceTransfer(ctx sdk.Context, amount sdk.Coin, fromAddr string,
 	}
 
 	return k.bankKeeper.SendCoins(ctx, fromSdkAddr, toSdkAddr, sdk.NewCoins(amount))
+}
+
+func (k Keeper) toggleTransfer(ctx sdk.Context, denom string, enabledStatus bool) error {
+	// verify that denom is an x/tokenfactory denom
+	_, _, err := types.DeconstructDenom(denom)
+	if err != nil {
+		return err
+	}
+
+	coins := k.bankKeeper.GetParams(ctx).SendEnabled
+
+	for i, coin := range coins {
+		if coin.Denom == denom {
+			coins[i].Enabled = enabledStatus
+		}
+	}
+
+	k.bankKeeper.SetParams(ctx, banktypes.Params{SendEnabled: coins})
+
+	return nil
 }
