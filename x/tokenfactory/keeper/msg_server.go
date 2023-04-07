@@ -93,10 +93,8 @@ func (server msgServer) Burn(goCtx context.Context, msg *types.MsgBurn) (*types.
 
 	if msg.BurnFromAddress == "" {
 		msg.BurnFromAddress = msg.Sender
-	} else {
-		if !types.IsCapabilityEnabled(server.Keeper.enabledCapabilities, types.EnableBurnFrom) {
-			return nil, types.ErrCapabilityNotEnabled
-		}
+	} else if !types.IsCapabilityEnabled(server.Keeper.enabledCapabilities, types.EnableBurnFrom) {
+		return nil, types.ErrCapabilityNotEnabled
 	}
 
 	err = server.Keeper.burnFrom(ctx, msg.Amount, msg.BurnFromAddress)
