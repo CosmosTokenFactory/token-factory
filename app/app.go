@@ -138,6 +138,10 @@ var (
 	// of "EnableAllProposals" (takes precedence over ProposalsEnabled)
 	// https://github.com/CosmWasm/wasmd/blob/02a54d33ff2c064f3539ae12d75d027d9c665f05/x/wasm/internal/types/proposal.go#L28-L34
 	EnableSpecificProposals = ""
+
+	// Features which are enabled. Blank = All.
+	// All options with `tokenfactorytypes.Enable*`
+	EnabledCapabilities = []string{}
 )
 
 // GetEnabledProposals parses the ProposalsEnabled / EnableSpecificProposals values to
@@ -462,6 +466,7 @@ func NewWasmApp(
 		app.AccountKeeper,
 		app.BankKeeper,
 		app.DistrKeeper,
+		EnabledCapabilities,
 	)
 	app.TokenFactoryKeeper = tokenFactoryKeeper
 

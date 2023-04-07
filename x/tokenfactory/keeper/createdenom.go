@@ -82,8 +82,10 @@ func (k Keeper) chargeForCreateDenom(ctx sdk.Context, creatorAddr string, _ stri
 			return err
 		}
 	} else {
-		gasIncrease := k.GetParams(ctx).DenomCreationGasConsume
-		ctx.GasMeter().ConsumeGas(gasIncrease, "consume denom creation gas")
+		if types.IsCapabilityEnabled(k.enabledCapabilities, types.EnableGasConsumeCreateCost) {
+			gasIncrease := k.GetParams(ctx).DenomCreationGasConsume
+			ctx.GasMeter().ConsumeGas(gasIncrease, "consume denom creation gas")
+		}
 	}
 	return nil
 }
