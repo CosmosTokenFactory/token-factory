@@ -71,7 +71,6 @@ func (k Keeper) validateCreateDenom(ctx sdk.Context, creatorAddr string, subdeno
 }
 
 func (k Keeper) chargeForCreateDenom(ctx sdk.Context, creatorAddr string, _ string) (err error) {
-
 	params := k.GetParams(ctx)
 
 	// if DenomCreationFee is non-zero, transfer the tokens from the creator
