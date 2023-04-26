@@ -7,7 +7,7 @@ require (
 	github.com/cosmos/cosmos-proto v1.0.0-beta.2
 	github.com/cosmos/cosmos-sdk v0.45.15
 	github.com/cosmos/gogoproto v1.4.6
-	github.com/cosmos/ibc-go/v4 v4.3.0
+	github.com/cosmos/ibc-go/v4 v4.4.0
 	github.com/cosmos/interchain-accounts v0.2.6
 	github.com/gogo/protobuf v1.3.3
 	github.com/golang/protobuf v1.5.2
